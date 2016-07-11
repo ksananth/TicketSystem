@@ -1,0 +1,135 @@
+<div role="main" class="container theme-showcase" style="padding:0px;">
+      <div class="" style="margin-top:20px;">
+        <div class="col-lg-8" style="padding-left:0px;">
+			
+			<div class="bs-component" ng-controller="allTicket">
+				
+				
+					<div class="form-group">
+						<label >Add Ticket</label>						
+					</div>
+				
+				<div   style="overflow:auto;">
+				<form  class="form-horizontal addTicket"  name="userForm" novalidate ng-submit="submitForm(userForm.$valid)" >
+				<table class="table">
+					
+					<tbody>
+					<tr>
+						    <td>Date</td>
+							<td ng-bind="results.userDetails.call_date | date:'yyyy-MM-dd   HH:mm:ss'"> </td>							
+						</tr>
+						<tr>
+						    <td>Status</td>
+							<td> 
+							<div ng-show="results.userPersonalDetail.user_level=='2' || !oldTicket"><span ng-if="results.userDetails.call_status=='' || results.userDetails.call_status=='0'">OPEN</span>
+							<span ng-if="results.userDetails.call_status=='3'">PENDING</span>
+							<span ng-if="results.userDetails.call_status=='4'">FIXED</span>
+							<span ng-if="results.userDetails.call_status=='1'">CLOSED</span></div>
+							<select   ng-hide="results.userPersonalDetail.user_level=='2' || !oldTicket"  class="form-control" ng-model="results.userDetails.call_status"  ng-options="status.id as status.status for status in results.status">
+									<option value="">---Select Status---</option> 								
+								 </select>
+					  </td>							
+						</tr>
+						
+						<tr>
+						    <td>Name</td>
+							<td> <span   ng-bind="results.userDetails.call_first_name"></span> <!--<input   ng-hide="results.userPersonalDetail.user_level=='2'" name="name" required ng-model="results.userDetails.call_first_name" class="form-control" type="text" placeholder="Enter Name">-->
+							
+							</td>							
+						</tr>
+						<tr>
+						    <td>Email</td>
+							<td><span ng-bind="results.userDetails.call_email"></span> <!--<input type="email"  ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required name="userEmail" ng-model="results.userDetails.call_email" class="form-control"  placeholder="Enter Email">--></td>							
+						</tr>
+						<tr>
+						    <td>Phone</td>
+							<td><span ng-bind="results.userDetails.call_phone"><!-- <input required  ng-model="results.userDetails.call_phone" class="form-control" type="text" placeholder="Enter phone">--></td>							
+						</tr>
+						<tr>
+						    <td>Category</td>
+							<td> 
+								<select ng-disabled="oldTicket" disabled class="form-control" ng-model="results.userDetails.call_department"  required ng-options="dept.type_id as dept.department for dept in results.department">
+									<option value="">---Select Category---</option> 								
+								 </select>
+							 </td>							
+						</tr>
+						<tr>
+						    <td>Sub Category</td>
+							<td> 
+								<select  ng-disabled="oldTicket" class="form-control" disabled ng-model="results.userDetails.call_device" required ng-options="devices.type_id as devices.device for devices in results.device | secondDropdown: results.userDetails.call_department">
+									<option value="">---Select Sub Category---</option> 								
+								 </select>
+							</td>							
+						</tr>
+						<tr>
+						    <td>Location</td>
+							<td> <input required  ng-disabled="oldTicket" disabled required ng-model="results.userDetails.call_location"  class="form-control" type="text" placeholder="Block B,3rd Floor,Room-12"></td>							
+						</tr>
+						<!--<tr>
+						    <td>Request Type</td>
+							<td> 
+								<select class="form-control" ng-model="results.userDetails.call_request" required  ng-options="requests.type_id as  requests.request for requests in results.request" >
+									<option value="">---Select Request Type---</option> 								
+								 </select>
+							</td>							
+						</tr>-->
+						
+						<tr>
+						    <td>Detail</td>
+							<td> <textarea  ng-disabled="oldTicket" disabled required ng-model="results.userDetails.call_details" ng-minlength="10" class="form-control" rows="3" placeholder="Enter Detail(min 10) ..."></textarea></td>							
+						</tr>
+						<tr ng-show="oldTicket">
+						    <td>Solution</td>
+							<td> <textarea  ng-required="results.userDetails.call_status=='4'" ng-readonly="results.userPersonalDetail.user_level=='2'" ng-model="results.userDetails.call_solution" class="form-control" rows="3" placeholder="Solution..."></textarea></td>							
+						</tr>
+						<tr  ng-hide="results.userPersonalDetail.user_level=='2' || results.userPersonalDetail.user_level=='1'">
+						    <td>Assign Staff</td>
+							<td> 
+								<select class="form-control"  ng-required="results.userPersonalDetail.user_level=='0' || results.userPersonalDetail.user_level=='4'" ng-model="results.userDetails.call_staff"  ng-options="users.user_id as users.name for users in results.users" >
+									<option value="">---Select Staff---</option> 								
+								 </select>
+								 
+							</td>							
+						</tr>
+						<tr>
+						    <td colspan="2">
+					
+							<input class="btn btn-block btn-primary btn-sm"   value="Update Ticket" type="submit" ></td>
+													
+						</tr>
+						
+						
+						
+					</tbody>
+				</table> 
+				</form>
+				
+				 <div id='dv1'  ng-show="oldTicket">
+            <form>
+                <div>Post your Comment</div ><br>
+                <form>
+                    <textarea ng-model="txtcoment" placeholder="Your Comment" class="form-control" rows="3"  ng-disabled="results.userDetails.call_status=='1'"></textarea>
+                    <button ng-click='btn_add(txtcoment);' style='margin-top:10px;display:block;'  ng-disabled="results.userDetails.call_status=='1'">Post Comment</button>
+ 
+                    <h4>Comments</h4>
+                    <ul>
+                        <li ng-repeat="comnt in results.notes"> <i class="fa fa-circle-o text-red"></i> {{ comnt.note_body }} <a class="pull-right"  style="float: right;" href="" ng-click="remItem($index,comnt.note_id)">x</a><span style="margin: 5px;" class="label label-primary pull-right" my-date-format="comnt.note_post_date"></span><span style="margin: 5px;"  class="label label-primary pull-right" ng-bind="comnt.note_relation_name"></span></li>
+                    </ul>
+					<br>
+					<br>
+                </form> 
+        </div>
+				</div>
+				
+			</div>
+			
+			<div style="height:250px;">.</div>
+		</div>
+		
+		
+      </div>
+	  
+	  
+	 
+	  <loading></loading>
+    </div>

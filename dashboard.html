@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html ng-app="myApp"  ng-cloak>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	
+	<link href="css/toaster.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/image-crop-styles.css">
+
+	 <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+	
+	 <link rel="stylesheet" href="plugins/ngNotificationsBar/ngNotificationsBar.min.css">
+  
+  
+	
+	<link href='plugins/angularChart/angular-chart.css' rel='stylesheet' type='text/css'>
+	<!--datatable-->
+	
+	<link href='css/dataTables.bootstrap.css' rel='stylesheet' type='text/css'>
+	<link href='css/dataTables.responsive.css' rel='stylesheet' type='text/css'>
+	<link href='css/mycss.css' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+  <notifications-bar class="notifications"  closeIcon="fa fa-times-circle"></notifications-bar>
+      <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
+    <div class="wrapper" ng-controller="AddOrderController">
+
+      <header class="main-header">
+        <!-- Logo -->
+        <a href="{{(dashboard.dashboard.user_level=='0')?'dashboard.html#/dashboard':'dashboard.html#/showTicket'}}" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>A</b>LT</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>Ticket</b>System</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+              
+            
+             
+              
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                  <img ng-src="{{dashboard.dashboard.user_profile_pic}}" class="user-image" alt="User Image">
+                  <span class="hidden-xs" ng-bind="dashboard.dashboard.user_name"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
+					<img ng-src="{{dashboard.dashboard.user_profile_pic}}"></img>
+                    <p>
+                      <span ng-bind="dashboard.dashboard.user_name"></span> - <span ng-bind="dashboard.dashboard.user_category"></span>
+                      <small>Member since Nov. 2012</small>
+                    </p>
+                  </li>
+                  
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="#/myAccount" style="width: 100px;" class="btn btn-default btn-flat">Profile</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="javascript:void(0)" style="width: 100px;" class="btn btn-default btn-flat" ng-click="logout()">Sign out</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- Control Sidebar Toggle Button 
+              
+			  <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="control-sidebar">
+                  <i class="fa fa-bell-o"></i>
+                  <span class="label label-warning">10</span>
+                </a>
+				</li>-->
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+          
+  
+<div class="user-panel"> 
+  <div class="pull-left image"> 
+    <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
+    <img ng-src="{{dashboard.dashboard.user_profile_pic}}"></img> </div>
+  <div class="pull-left info"> 
+    <p ng-bind="dashboard.dashboard.user_name"><br>
+    </p>
+    <a href="#"><i class="fa fa-circle text-success"></i> Online</a> </div>
+</div>
+         
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            
+    
+  <li class="header">MAIN NAVIGATION</li>
+            
+    
+  <li ng-show="dashboard.dashboard.user_level=='0'" class="active treeview"> <a href="dashboard.html#/dashboard"> 
+    <i class="fa fa-dashboard"></i> Dashboard </a> </li>
+            
+    
+  <li class="treeview"> <a href="#/showTicket?status=0"> <i class="fa fa-files-o"></i> 
+    <span>Open Tickets</span> <span class="label label-primary pull-right" ng-bind="dashboard.dashboard.TotalOpen"></span> 
+    </a> </li>
+	  
+	   
+  <li class="treeview"> <a href="#/showTicket?status=3"> <i class="fa fa-files-o"></i> 
+    <span>Pending Tickets</span> <span class="label label-primary pull-right" ng-bind="dashboard.dashboard.Pending"></span> 
+    </a> </li>
+            
+    
+  <li> <a href="#/showTicket?status="> <i class="fa fa-th"></i> <span>Total Ticket</span> 
+    <small class="label pull-right bg-green" ng-bind="dashboard.dashboard.TotalTicket"></small> 
+    </a> </li>
+            
+    
+            
+    
+            
+    
+  <li class="treeview"> <a href="#/addTicket?ticket="> <i class="fa fa-edit"></i> 
+    <span>Create Ticket</span> </a> </li>
+                      
+    
+            
+   
+            
+    
+            
+    
+            
+    
+  <li><a href="#/searchTicket"><i class="fa fa-search-plus"></i> <span>Search</span></a></li>
+	 
+    
+  <li><a href="#/myAccount"><i class="fa  fa-user"></i> <span>MyAccount</span></a></li>
+            
+    
+  <li ng-show="dashboard.dashboard.user_level=='0'" class="header">ADMIN</li>
+            
+    
+  <li ng-show="dashboard.dashboard.user_level=='0'"><a target="_blank" href="setting/fhd_settings.php"><i class="fa fa-circle-o text-red"></i> 
+    <span>Settings</span></a></li>
+            
+    
+  <li ng-show="dashboard.dashboard.user_level=='0'"><a href="#/addUser?userId="><i class="fa fa-circle-o text-yellow"></i> 
+    <span>Add User</span></a></li>
+            
+    
+  <li ng-show="dashboard.dashboard.user_level=='0'"><a href="#/viewUser"><i class="fa fa-circle-o text-aqua"></i> 
+    <span>Edit User</span></a></li>
+    </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Dashboard
+            <small>Control panel</small>
+          </h1>
+        <!--   <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+          </ol> -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content iconContent">
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+		  <a href="#/showTicket?status=0" ng-show="dashboard.dashboard.user_level=='0'">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3 ng-bind="dashboard.dashboard.TotalOpen"></h3>
+                  <p>Open Tickets</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+              </div>
+            </div><!-- ./col -->
+			</a>
+			<a href="#/showTicket?status=" ng-show="dashboard.dashboard.user_level=='0'">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3 ng-bind="dashboard.dashboard.TotalTicket"></h3>
+                  <p>Total Tickets</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+              </div>
+            </div><!-- ./col -->
+			</a>
+			<a href="#/viewUser?status=" ng-show="dashboard.dashboard.user_level=='0'">
+            <div class="col-lg-3 col-xs-6" >
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3 ng-bind="dashboard.dashboard.pending_user"></h3>
+                  <p>Pending Users</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+               <!--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+              </div>
+            </div><!-- ./col -->
+			</a>
+			<a href="#/viewUser?status=" ng-show="dashboard.dashboard.user_level=='0'">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3 ng-bind="dashboard.dashboard.total_user"></h3>
+                  <p>Total Users</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+              <!--   <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+              </div>
+            </div><!-- ./col -->
+			</a>
+          </div><!-- /.row -->
+          <!-- Main row -->
+		  <section class="content middleContent">
+			
+		    <div data-ng-view="" id="ng-view" class="slide-animation" style="padding-left: 9px;></div>  
+          </section>
+          <!-- /.row (main row) -->
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      
+
+      
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+
+    <!-- jQuery 2.1.4 
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
+	<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  
+  
+    <!-- datepicker -->
+    <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+
+
+    <!-- FastClick -->
+    <script src="plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.min.js"></script>
+ 
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+	
+
+
+  <!-- Libs -->
+  <script src="js/angular.js"></script>
+<!--   <script src="plugins/highchart/highcharts.js"></script>
+	<script src="plugins/highchart/highcharts-ng.js"></script>
+	<script src="plugins/highchart/exporting.js"></script> -->
+		 <script src="plugins/angularChart/Chart.js"></script>
+	 <script src="plugins/angularChart/tc-angular-chartjs.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="js/angular-animate.js" ></script>
+  <script src="js/toaster.js"></script>
+   <script src="plugins/jqueryDatatable/jquery.dataTables.min.js"></script>
+<script src="plugins/jqueryDatatable/dataTables.bootstrap.js"></script>
+<script src="plugins/jqueryDatatable/dataTables.responsive.min.js"></script>
+<script src="plugins/jqueryDatatable/angular-datatables.js"></script>
+<script src="plugins/ng-confirm/ui-bootstrap-tpls-0.14.3.js"></script>
+<script src="plugins/ng-confirm/angular-confirm.js"></script>
+<script src="plugins/ngNotificationsBar/angular-sanitize.js"></script>
+<script src="plugins/ngNotificationsBar/ngNotificationsBar.min.js"></script>
+  
+  <script src="app/dashboardapp.js"></script>
+  <script src="app/dirPagination.js"></script>
+  <script src="app/data.js"></script>
+  <script src="app/directives.js"></script>
+  <script src="app/authCtrl.js"></script>
+     <!-- REQUIRED 3/3 - the image crop directive -->
+  <script src="plugins/imageUpload/image-crop.js"></script>
+  
+   
+  </body>
+
+</html>

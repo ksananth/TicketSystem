@@ -1,0 +1,17 @@
+[02-Oct-2015 19:38:40 UTC] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/mangaisolutions/public_html/dev/authentication-app/api/v1/activate.php on line 10
+[02-Oct-2015 19:40:30 UTC] PHP Warning:  mysqli::mysqli(): (42000/1044): Access denied for user 'mangaiso_ticket'@'104.238.72.226' to database 'freehelpdesk' in /home/mangaisolutions/public_html/dev/authentication-app/api/v1/activate.php on line 10
+[02-Oct-2015 19:48:54 UTC] PHP Parse error:  syntax error, unexpected '".  target='_blank'><input typ' (T_CONSTANT_ENCAPSED_STRING) in /home/mangaisolutions/public_html/dev/authentication-app/api/v1/authentication.php on line 140
+[02-Oct-2015 19:48:54 UTC] PHP Parse error:  syntax error, unexpected '".  target='_blank'><input typ' (T_CONSTANT_ENCAPSED_STRING) in /home/mangaisolutions/public_html/dev/authentication-app/api/v1/authentication.php on line 140
+[02-Oct-2015 19:48:55 UTC] PHP Parse error:  syntax error, unexpected '".  target='_blank'><input typ' (T_CONSTANT_ENCAPSED_STRING) in /home/mangaisolutions/public_html/dev/authentication-app/api/v1/authentication.php on line 140
+[02-Oct-2015 19:49:24 UTC] PHP Parse error:  syntax error, unexpected '".  target='_blank'><input typ' (T_CONSTANT_ENCAPSED_STRING) in /home/mangaisolutions/public_html/dev/authentication-app/api/v1/authentication.php on line 140
+[02-Oct-2015 19:50:13 UTC] PHP Parse error:  syntax error, unexpected '".  target='_blank'><input typ' (T_CONSTANT_ENCAPSED_STRING) in /home/mangaisolutions/public_html/dev/authentication-app/api/v1/authentication.php on line 140
+[18-Oct-2015 06:51:15 UTC] PHP Parse error:  syntax error, unexpected 'user_id' (T_STRING) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 19
+[18-Oct-2015 06:51:18 UTC] PHP Parse error:  syntax error, unexpected 'user_id' (T_STRING) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 19
+[18-Oct-2015 06:51:19 UTC] PHP Parse error:  syntax error, unexpected 'user_id' (T_STRING) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 19
+[18-Oct-2015 06:51:52 UTC] PHP Parse error:  syntax error, unexpected 'user_id' (T_STRING) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 19
+[18-Oct-2015 06:52:33 UTC] PHP Parse error:  syntax error, unexpected 'user_id' (T_STRING) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 19
+[18-Oct-2015 06:53:04 UTC] PHP Parse error:  syntax error, unexpected 'user_id' (T_STRING) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 19
+[18-Oct-2015 06:59:51 UTC] PHP Parse error:  syntax error, unexpected 'user_id' (T_STRING) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 19
+[06-Nov-2015 22:32:49 UTC] PHP Fatal error:  Call to undefined method DbHandler::getAllRecordasArray() in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 260
+[17-Jan-2016 07:26:38 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 15609755 bytes) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 313
+[17-Jan-2016 07:29:19 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 13959891 bytes) in /home/mangaisolutions/public_html/dev/TicketSystem/api/v1/authentication.php on line 313

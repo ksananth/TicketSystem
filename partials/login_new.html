@@ -1,0 +1,75 @@
+<!--
+    <div class="login-box" style="border: 1px solid #ccc;background-color: red;">
+      <div class="login-logo">
+        <a href="index2.html"><b>Ticket</b>System</a>
+      </div>
+      <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <form name="loginForm" class="form-horizontal" role="form">
+          <div class="form-group has-feedback">
+            <input  class="form-control" placeholder="Email/Username" name="email" ng-model="login.email" required focus>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password" ng-model="login.password" required>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="row">
+            
+        <div class="col-xs-8" style="display:none;"> 
+          <div class="checkbox icheck"> 
+            <label> 
+            <input type="checkbox">
+            Remember Me </label>
+          </div>
+        </div>
+    
+            
+        <div class="col-xs-4" style="float:right;"> 
+          <button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">Sign 
+          In</button>
+        </div>
+        
+		
+          </div>
+        </form>
+
+
+        <a href="#">I forgot my password</a><br>
+        <a href="#/signup" class="text-center">Register a new membership</a>
+
+      </div>
+    </div> -->
+	
+	
+	<div class="box slideDown">
+	<div class="img">
+	<h3>Ticket System</h3> 
+    <img src="dist/img/avatar2.png" width="100" />
+	</div>
+</div>
+
+
+
+<div class="form" style="display:none;">
+<div class="header"><h2>Sign In</h2></div>
+<div class="login">
+<form name="loginForm" role="form">
+<ul>
+<li>
+	<span class="un"><i class="fa fa-user"></i></span><input type="text" required class="text" placeholder="User Name Or Email" ng-model="login.email" required focus/></li>
+<li>
+	<span class="un"><i class="fa fa-lock"></i></span><input type="password" required class="text" placeholder="User Password" ng-model="login.password" required/></li>
+<li>
+	<input type="submit" value="LOGIN" class="btn" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">
+</li>
+<li><div class="span"><span class="ch"><input type="checkbox" id="r"> <label for="r">Remember Me</label> </span> <span class="ch"><a href="#/forgotPassword">Forgot Password?</a></span></div></li>
+</ul>
+</form>
+
+</div>
+<div class="sign">
+<div class="need">Need new account ?</div>
+<div class="up"><a href="#/signup">Sign Up</a></div>
+</div>
+</div>

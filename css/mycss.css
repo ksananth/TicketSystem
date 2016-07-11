@@ -1,0 +1,152 @@
+/*for comments*/
+ #dv1{ border:1px solid #DBDCE9; background-color:#cccccc;  margin-left:auto; margin-right:auto;   border-radius:7px;   padding: 25px; margin-bottom:20px;}
+           
+            #dv1 h2 {font: 400 15px/1.9 Helvetica, Verdana, sans-serif;             margin: 0;              padding: 0;           }
+            #dv1 ul {list-style-type: none;  margin: 0;padding: 0;            }
+            #dv1 li {font: 200 15px/1.9 Helvetica, Verdana, sans-serif;                border-bottom: 1px solid #fff;            }
+            #dv1 li:last-child {border: none; }
+            #dv1 li a {padding-left: 20px; text-decoration: none; color: #000; display: block;        }
+			
+	/*for comments*/		
+			
+.footer {
+  background-color:#333333;
+  color:white;
+  padding-top:15px;
+}
+
+.chart-banner {
+  background-color:rgba(0, 140, 186, 0.3);
+  padding-top:25px;
+  margin-bottom:15px;
+  border-top:1px solid #666666;
+  border-bottom:1px solid #cccccc;
+}
+
+.tc-chart-js-legend {
+text-align:center;
+  list-style-type: none;
+  padding-left: 0px;
+      font-size: 12px;
+}
+.tc-chart-js-legend li {
+display: inline-block;
+list-style-type: none;
+padding: 20px;
+}
+.tc-chart-js-legend li span {
+  width:15px;
+  height:15px;
+  display:block;
+  float:left;
+  margin-right:10px;
+}
+
+
+#loading-img {
+			background: url(http://code.jquery.com/mobile/1.3.1/images/ajax-loader.gif) center center no-repeat;
+			height: 100%;
+			z-index: 20;
+			-webkit-transition: background-color 0;
+			transition: background-color 0;
+}
+
+.overlay {
+	height:100%;
+			z-index:999;
+			background: #000;
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			opacity: 0.7;
+			-webkit-transition: background-color 1s;
+			transition: background-color 1s;
+}
+
+
+/*notification*/
+.notifications{
+    z-index: 1031;
+    position: fixed;
+}
+
+footer {
+	text-align: center;
+}
+
+.btn {
+	padding: 1px;
+	margin: 0 14px;
+	border: 0;
+	width: 160px;
+}
+
+.btn:focus {
+	outline: 0;
+}
+
+.btn-error {
+	background-color: #F64747;
+	color: #fff;
+}
+
+.btn-warning {
+	background-color: #F7CA18;
+	color: #fff;
+}
+
+.btn-success {
+	background-color: #03C9A9;
+	color: #fff;
+}
+
+.github-ribbon {
+	font-family: sans-serif;
+	display: block;
+	background: #ABB7B7;
+	color: #fff;
+	font-size: 12px;
+	padding: 12px 50px;
+	position: absolute;
+	top: 38px;
+	right: -45px;
+	text-decoration: none;
+	text-transform: uppercase;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	z-index: 1;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url("../fonts/glyphicons-halflings-regular.eot");
+  src: url("../fonts/glyphicons-halflings-regular.eot") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.woff") format("woff");
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-remove:before {
+  content: "\e014";
+}
+
+.like{
+padding-left:20px;
+}
+
+.dislike{
+padding-left:20px;
+}

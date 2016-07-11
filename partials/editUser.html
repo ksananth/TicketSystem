@@ -1,0 +1,135 @@
+<div role="main" class="container theme-showcase" style="padding:0px;">
+      <div class="" style="margin-top:20px;">
+        <div class="col-lg-8" style="padding-left:0px;">
+			
+			<div class="bs-component">
+				
+				<form class="form-inline" name="userForm" novalidate ng-submit="updateUser(userForm.$valid)">
+					<div class="form-group">
+						<label >Add User</label>						
+					</div>
+				
+				<div   style="overflow:auto;">
+				<table class="table">
+					
+					<tbody>
+					
+						<tr>
+						    <td>User Login*</td>
+							<td> 
+								 <input class="form-control" required ng-model="userDetail.user_login" type="text" placeholder="User Login">
+					  </td>							
+						</tr>
+						<tr>
+						    <td>Password</td>
+							<td> <input class="form-control" type="password" placeholder="Minimum 5 charaters" ng-model="userDetail.user_password"></td>							
+						</tr>
+						<tr>
+						    <td>User Category*</td>
+							<td> 
+							    
+								<select   class="form-control"  required ng-options=" status for status in userDetail.category" ng-model="userDetail.user_category">
+										<option value="">---Select Status---</option> 								
+								</select>
+							</td>
+							
+						</tr>
+						<tr>
+						    <td>User Level*</td>
+							<td> 
+							
+								<select   class="form-control"  required ng-options="status.id as status.status for status in userDetail.level" ng-model="userDetail.user_level">
+										<option value="">---Select Status---</option> 								
+								</select>
+							</td>							
+						</tr>
+						<tr>
+						    <td>Name*</td>
+							<td> <input class="form-control" required type="text" ng-model="userDetail.user_name" placeholder="Enter Name"></td>							
+						</tr>
+						<tr ng-show="userDetail.user_category=='Parent' || userDetail.user_category=='Student'">
+						    <td>Registration Id</td>
+							<td> <input class="form-control" type="text" ng-model="userDetail.user_registrationId" placeholder="Enter Name"></td>							
+						</tr>
+						<tr ng-show="userDetail.user_category=='Parent' || userDetail.user_category=='Student'">
+						    <td>Department</td>
+							<td> <input class="form-control" type="text" ng-model="userDetail.user_department" placeholder="Enter Name"></td>							
+						</tr>
+						<tr ng-show="userDetail.user_category=='Parent' || userDetail.user_category=='Student'">
+						    <td>Course</td>
+							<td> <input class="form-control" type="text" ng-model="userDetail.user_course" placeholder="Enter Name"></td>							
+						</tr>
+						<tr>
+						    <td>Email*</td>
+							<td> <input class="form-control" type="email" required ng-model="userDetail.user_email" placeholder="Enter Email"></td>							
+						</tr>
+						
+						<tr>
+						    <td>Phone*</td>
+							<td> <input class="form-control" required ng-model="userDetail.user_phone" type="text" placeholder="Enter phone"></td>							
+						</tr>
+						<tr>
+						    <td>Address</td>
+							<td> 
+								<input class="form-control" ng-model="userDetail.user_address" type="text" placeholder="Enter Address">
+							 </td>							
+						</tr>
+						<tr>
+						    <td>City</td>
+								<td> <input class="form-control" ng-model="userDetail.user_city" type="text" placeholder="Enter City">
+							</td>							
+						</tr>
+						<tr>
+						    <td>State</td>
+							<td> <input class="form-control" ng-model="userDetail.user_state" type="text" placeholder="Enter State">	</td>							
+						</tr>
+						<tr>
+						    <td>Zip</td>
+							<td> <input class="form-control" ng-model="userDetail.user_zip" type="text" placeholder="Enter Zip ..."></td>							
+						</tr>
+						<tr>
+						    <td>Country</td>
+							<td> <input class="form-control" ng-model="userDetail.user_country" type="text" placeholder="Enter Country ..."></td>							
+						</tr>
+						<tr>
+						    <td>Receive Ticket Status by Email?</td>
+							<td> 
+							  <input type="checkbox"  ng-model="userDetail.user_msg_send" name="receiveTicket" value="receiveTicket"> 
+							</td>							
+						</tr>
+						<tr>
+						    <td>User pending?</td>
+							<td> 
+							  <input type="checkbox"  ng-model="userDetail.user_pending" name="receiveTicket" value="receiveTicket">
+							</td>							
+						</tr>
+							<tr>
+						    <td>Lock from user edit?</td>
+							<td> 
+							  <input type="checkbox"  ng-model="userDetail.user_protect_edit" name="receiveTicket" value="receiveTicket"> 
+							</td>							
+						</tr>
+						
+						<tr>
+						    <td colspan="2"><button class="btn btn-block btn-primary btn-sm" type="submit">Update User</button></td>
+													
+						</tr>
+						
+						<tr>
+						    <td colspan="2">Add Note</td>													
+						</tr>
+						
+						
+						
+						
+					</tbody>
+				</table> 
+				</form>
+				</div>
+				
+			</div>
+		</div>
+		
+      </div>
+	  <loading></loading>
+    </div>

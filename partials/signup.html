@@ -1,0 +1,150 @@
+
+    <div class="register-box">
+      <div class="register-logo" style="background-color: ##17233B;color:#fff;">
+        Registration
+      </div>
+
+      <div class="register-box-body">
+        <p class="login-box-msg">Register a new membership</p>
+		<div>
+      
+		<div ng-show="imageCropStep == 2" style="margin-bottom: 5px;">
+		   <br/>
+		
+		   <button ng-click="clear()" class="cancelImage1">Cancel</button>
+		   <button ng-click="initCrop = true" class="cropImage1">Crop</button>		
+	   </div>			
+	  
+	   <div>
+		  <!-- <image-crop			 
+			 data-height="200" //shape's height
+			 data-width="150" //shape's width
+			 data-shape="square" //the shape.. square or circle
+			 data-step="imageCropStep"//scope variable that will contain the current step of the crop (1. Waiting for source image; 2. Image loaded, waiting for crop; 3. Crop done)
+			 src="imgSrc" //scope variable that will be the source image for the crop (may be a Blob or base64 string)
+			 data-result-blob="result" //scope variable that will contain the Blob information
+			 data-result="resultDataUrl" //scope variable that will contain the image's base64 string representation
+			 crop="initCrop" //scope variable that must be set to true when the image is ready to be cropped
+			 padding="250" //space, in pixels, rounding the shape
+			 max-size="1024" //max of the image, in pixels
+		   ></image-crop> -->
+		   
+		   <image-crop			 
+			 data-height="150"
+			 data-width="150"
+			 data-shape="square"
+			 data-step="imageCropStep"
+			 src="imgSrc"
+			 data-result="result"
+			 data-result-blob="resultBlob"
+			 crop="initCrop"
+			 padding="250"
+			 max-size="1024"
+		   ></image-crop>		   
+	   </div>
+       	   
+		   
+		    <div class="fileUpload btn btn-primary">
+				<span>Upload</span>
+				<input type="file" class="upload" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+			</div>
+			 <div class="fileUpload btn btn-primary">
+				<span ng-click="clear()">Clear &nbsp;</span>				
+			</div>
+		
+	   		  
+	   
+	  <!-- <div ng-show="imageCropStep == 3">
+	   
+	   
+		 <img ng-src="{{result}}"></img>
+         <p>The Base64 String used in the image above:</p>         
+         <textarea class="result-datauri">{{ result }}</textarea>
+		 <button ng-click="clear()">Clear</button>	
+       
+	  </div> -->
+	    
+     </div>
+        <form  name="signupForm" class="signupForm form-horizontal" role="form">
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Full name (*)"  ng-model="signup.user_name" required focus>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+		  <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Login name (*)" ng-model="signup.user_login" required>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input  class="form-control" placeholder="Email (*)" ng-model="signup.user_email" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+			<span ng-show="signupForm.email.$error.email" class="help-inline">Email is not valid</span> 
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password (*)"   ng-model="signup.user_password" required>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>		
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Retype password (*)" ng-model="signup.password2" password-match="signup.user_password" required>
+            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+			<span class="errorMessage" ng-show="signupForm.password2.$dirty && signupForm.password2.$error.required"> Enter password again.</span>
+
+                               <span class="errorMessage" ng-show="signupForm.password2.$dirty && signupForm.password2.$error.passwordNoMatch && !signupForm.password2.$error.required"> Password do not match.</span>
+          </div>
+		  
+		  <div class="form-group has-feedback">                           
+                                <input type="text" class="form-control" placeholder="Phone (*)" name="phone" ng-model="signup.user_phone" required/>
+       <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
+                            </div>
+		  
+		  <div class="row form-group has-feedback" >
+                   <select ng-init="signup.user_category='Staff'" ng-model="signup.user_category" class="form-control"  placeholder="Category (*)">
+      <option value="Staff" Selected>Staff</option>
+      <option value="Student">Student</option>
+      <option value="Parent">Parent</option>
+</select>
+
+                  </div>
+			
+		 <div class="form-group has-feedback" ng-hide="signup.user_category=='Staff'" ng-show="signup.user_category=='Student' || signup.user_category=='Parent'">
+            <input type="text" class="form-control"  ng-model="signup.user_registrationId"  placeholder="Registration  Id">
+            <span  ng-show="signup.user_category=='Student' || signup.user_category=='Parent'" class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+		  	  
+		  <div class="form-group has-feedback">
+            <!--<input type="text" class="form-control" ng-model="signup.user_department" placeholder="Department">-->
+			<select class="form-control" ng-model="signup.user_department" ng-options="dept.department as dept.department for dept in department">
+			<option value="">---Please select Department---</option>
+			</select>
+            <span class="glyphicon glyphicon-education form-control-feedback"></span>
+          </div>
+		  
+		   <div class="form-group has-feedback" ng-hide="signup.user_category=='Staff'" ng-show="signup.user_category=='Student' || signup.user_category=='Parent'">
+            <!--<input type="text" ng-model="signup.user_course"  class="form-control" placeholder="Course Name">-->
+			<select class="form-control" ng-model="signup.user_course" ng-options="cours.request as cours.request for cours in course">
+			<option value="">---Please select Course---</option>
+			</select>
+            <span ng-show="signup.user_category=='Student' || signup.user_category=='Parent'" class="glyphicon glyphicon-education form-control-feedback"></span>
+          </div>
+		  
+		  
+				  
+          <div class="row">
+            <div class="col-xs-8" style="display:none;">
+              <div class="checkbox icheck">
+                <label>
+                  <input type="checkbox"> I agree to the <a href="#">terms</a>
+                </label>
+              </div>
+            </div><!-- /.col -->
+            <div class="col-xs-4" style="float:right;">
+              <button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">Register</button>
+            </div><!-- /.col -->
+          </div>
+        </form>
+
+      
+
+        <a href="#/login" class="text-center">I already have a membership</a>
+		  <div style="height:200px;"></div>
+      </div><!-- /.form-box -->
+    </div><!-- /.register-box -->

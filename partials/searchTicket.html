@@ -1,0 +1,92 @@
+<div role="main" class="container theme-showcase" style="padding:0px;">
+      <div class="" style="margin-top:20px;">
+        <div class="col-lg-8" style="padding-left:0px;">
+			
+			<div class="bs-component" ng-controller="allTicket">
+				
+				<form class="form-inline">
+					<div class="form-group">
+						<label >Search Ticket</label>						
+					</div>
+				</form>
+				<div   style="overflow:auto;">
+				<table class="table">
+					
+					<tbody>
+						<tr>
+						    <td>Status</td>
+							<td> 
+							<select class="form-control" ng-model="results.userDetails.status" required ng-options="status.id as status.status for status in results.status">
+									<option value="">---Select Status---</option> 								
+								 </select>
+					  </td>							
+						</tr>
+						<tr>
+						    <td>From Date</td>
+							<td> <input class="form-control" type="text" placeholder="Enter From Date"  id="fromDate" name="fromDate" ng-model="results.userDetails.call_date1"></td>							
+						</tr>
+						<tr>
+						    <td>To Date</td>
+							<td> <input class="form-control" type="text" placeholder="Enter To Date"  id="toDate" name="toDate" ng-model="results.userDetails.call_date2"></td>							
+						</tr>
+						<tr ng-if="results.userPersonalDetail.user_level==0 || results.userPersonalDetail.user_level==4">
+						    <td>Name</td>
+							<td><input  name="name" required ng-model="results.userDetails.call_first_name" class="form-control" type="text" placeholder="Enter Name"></td>							
+						</tr>
+						<tr ng-if="results.userPersonalDetail.user_level==0 || results.userPersonalDetail.user_level==4">
+						    <td>Email</td>
+							<td>  <input type="email"  ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required name="userEmail" ng-model="results.userDetails.call_email" class="form-control"  placeholder="Enter Email"></td>							
+						</tr>
+						<tr ng-if="results.userPersonalDetail.user_level==0 || results.userPersonalDetail.user_level==4">
+						    <td>Phone</td>
+							<td> <input required  ng-model="results.userDetails.call_phone" class="form-control" type="text" placeholder="Enter phone"></td>							
+						</tr>
+						<tr ng-if="results.userPersonalDetail.user_level==0 || results.userPersonalDetail.user_level==4">
+						    <td>Department</td>
+							<td> 
+								<select class="form-control" ng-model="results.userDetails.call_department"  required ng-options="dept.type_id as dept.department for dept in results.department">
+									<option value="">---Select Department---</option> 								
+								 </select>
+							 </td>							
+						</tr>
+						<tr ng-if="results.userPersonalDetail.user_level==0 || results.userPersonalDetail.user_level==4">
+						    <td>Sub Category</td>
+							<td> 
+								<select class="form-control" ng-model="results.userDetails.call_device" required ng-options="devices.type_id as devices.device for devices in results.device">
+									<option value="">---Select Sub Category---</option> 								
+								 </select>
+							</td>							
+						</tr>
+						<tr ng-if="results.userPersonalDetail.user_level==0 || results.userPersonalDetail.user_level==4">
+						    <td>Request Type</td>
+							<td> 
+								<select class="form-control" ng-model="results.userDetails.call_request" required  ng-options="requests.type_id as  requests.request for requests in results.request" >
+									<option value="">---Select Request Type---</option> 								
+								 </select>
+							</td>							
+						</tr>
+						
+						<tr ng-if="results.userPersonalDetail.user_level==0 || results.userPersonalDetail.user_level==4">
+						    <td>Assign Staff</td>
+							<td> 
+								<select class="form-control" ng-model="results.userDetails.call_staff" required ng-options="users.user_id as users.name for users in results.users" >
+									<option value="">---Select Staff---</option> 								
+								 </select>
+							</td>							
+						</tr>
+						<tr>
+						    <td colspan="2"><button class="btn btn-block btn-primary btn-sm" ng-click="searchTicket()" ng-disabled="!(results.userDetails.status==0 || !!results.userDetails.call_first_name || !!results.userDetails.call_email || !!results.userDetails.call_phone || !!results.userDetails.call_staff || !!results.userDetails.call_request || !!results.userDetails.call_device || !!results.userDetails.call_department || !!results.userDetails.status || !!results.userDetails.call_date1  || !!results.userDetails.call_date2)">Search Ticket</button></td>
+													
+						</tr>
+						
+						
+					</tbody>
+				</table> 
+				</div>
+				
+			</div>
+		</div>
+		
+      </div>
+	  <loading></loading>
+    </div>

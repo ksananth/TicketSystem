@@ -1,0 +1,117 @@
+
+
+<div role="main" class="container theme-showcase" style="padding:0px;">
+      <div class="" style="margin-top:20px;">
+        <div class="col-lg-8" style="padding-left:0px;">
+			
+			<div class="bs-component">
+				
+				<!--<form class="form-inline">
+					<div class="form-group">
+						<label >Search</label>
+						<input type="text" ng-model="search" class="form-control" placeholder="Search">
+					</div>
+				</form>-->
+				
+					<table  datatable="ng" id="example" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+				<th></th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Assigned Staff</th>
+                    <th>Date</th>
+                  
+                    <th>Category</th>
+                    <th>Sub Category</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users" class="ticket_row_{{$index}}">
+                    <td><a ng-if="results.userPersonalDetail.user_level==0 || results.userPersonalDetail.user_level==4" class="fa fa-fw fa-trash" href="javascript:void(0)"  ng-click="deleteConfirmWithSettings({title: 'Delete it', ok: 'Yes', cancel: 'No'},$index,user.call_id)"></a>&nbsp;&nbsp;<a class="fa fa-fw fa-edit" href="#/addTicket?ticket={{user.call_id}}"></a></td>
+                    <td>{{user.call_id}}</td>
+                    <td>{{user.call_first_name}}</td>
+                    <td ng-if="user.call_status=='0'"><small class="label pull-middle bg-orange">Open</small></td>
+							<td ng-if="user.call_status=='1'"><small class="label pull-middle bg-green">Closed</small></td>
+							<td ng-if="user.call_status=='2'"><small class="label pull-middle bg-black">Deleted</small></td>
+							<td ng-if="user.call_status=='3'"><small class="label pull-middle bg-red">Pending</small></td>
+							<td ng-if="user.call_status=='4'"><small class="label pull-middle bg-blue">Fixed</small></td>
+							<td>{{user.user_login}}</td>
+							<td>{{user.call_date}}</td>
+							
+							<td>{{user.dept}}</td>
+							<td>{{user.device}}</td>                  
+              </tr>
+				
+            </tbody>
+        </table>
+		
+				<!--<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+						<th>					
+							</th>
+							<th ng-click="sort('id')">Id
+								<span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+							<th ng-click="sort('first_name')">Name
+								<span class="glyphicon sort-icon" ng-show="sortKey=='first_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+							<th ng-click="sort('first_name')">Status
+								<span class="glyphicon sort-icon" ng-show="sortKey=='first_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+							<th ng-click="sort('last_name')">Staff
+								<span class="glyphicon sort-icon" ng-show="sortKey=='last_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+							<th ng-click="sort('hobby')">Date
+								<span class="glyphicon sort-icon" ng-show="sortKey=='hobby'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+							<th ng-click="sort('first_name')">Type
+								<span class="glyphicon sort-icon" ng-show="sortKey=='first_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+							<th ng-click="sort('last_name')">Department
+								<span class="glyphicon sort-icon" ng-show="sortKey=='last_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+							<th ng-click="sort('hobby')">Device
+								<span class="glyphicon sort-icon" ng-show="sortKey=='hobby'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+						<td><a class="fa fa-fw fa-edit" href="#/addTicket?ticket={{user.call_id}}"></a></td>
+							<td>{{user.call_id}}</td>
+							<td>{{user.call_first_name}}</td>
+							<td ng-if="user.call_status=='0'"><small class="label pull-middle bg-orange">Open</small></td>
+							<td ng-if="user.call_status=='1'"><small class="label pull-middle bg-green">Closed</small></td>
+							<td ng-if="user.call_status=='3'"><small class="label pull-middle bg-black">Deleted</small></td>
+							<td>{{user.user_login}}</td>
+							<td>{{user.call_date}}</td>
+							<td>{{user.type}}</td>
+							<td>{{user.dept}}</td>
+							<td>{{user.device}}</td>
+						</tr>
+					</tbody>
+				</table> 
+				</div>
+				<dir-pagination-controls
+					max-size="5"
+					direction-links="true"
+					boundary-links="true" >
+				</dir-pagination-controls>-->
+			
+		</div>
+		
+      </div>
+	  <loading></loading>
+    </div>
+	
+<script>
+	
+	 document.addEventListener("DOMContentLoaded", function(event) {
+    console.log("DOM fully loaded and parsed");
+	$('#example').DataTable();
+	//debugger;
+		});
+</script>

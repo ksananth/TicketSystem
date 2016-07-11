@@ -1,0 +1,26 @@
+AIzaSyAXzUswkdy4x025aGvKmHJXeTmZiDbXbAc
+AIzaSyCMg-X6FWcR39W_zhUEAveHOKH1b5TnuOo
+
+Project ID
+api-project-1066808968946
+Project number
+1066808968946
+
+
+
+
+Server API Key help
+AIzaSyCMg-X6FWcR39W_zhUEAveHOKH1b5TnuOo
+Sender ID help
+223162575084
+
+
+$mysql_host = "mysql1.000webhost.com";
+$mysql_database = "a9414338_notify";
+$mysql_user = "a9414338_notify";
+$mysql_password = "Ananth1987";
+
+
+FTP host name	ananth.site88.net
+FTP user name	a9414338
+FTP password	ananth1987

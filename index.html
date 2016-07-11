@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+          <title>Ticket System</title>
+        
+            <link href="css/custom.css" rel="stylesheet">
+            <link href="css/toaster.css" rel="stylesheet">
+			<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+ 
+			<!-- Theme style -->
+			<link rel="stylesheet" href="dist/css/AdminLTE.css">
+			<link rel="stylesheet" href="css/image-crop-styles.css">
+		
+ 
+    
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+
+                <style>
+                  a {
+                  color: orange;
+                  }
+                </style>
+              
+              </head>
+
+  <body ng-cloak=""  class="hold-transition skin-blue sidebar-mini">
+      <div class="container_">
+        <div data-ng-view="" id="ng-view" class="slide-animation"></div>
+      </div>
+    </body>
+  <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
+  <!-- Libs -->
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-route.min.js"></script>
+  <script src="js/angular-animate.min.js" ></script>
+  <script src="js/toaster.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/data.js"></script>
+  <script src="app/directives.js"></script>
+  <script src="app/authCtrl.js"></script>
+   <!-- REQUIRED 3/3 - the image crop directive -->
+  <script src="plugins/imageUpload/image-crop.js"></script>
+ 
+	
+	<!-- jQuery 2.1.4 -->
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+   
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+     // $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script>
+		$(document).ready(function(){
+		$('.box .img').on('click', function() {
+			$(this).toggleClass('clicked');
+			if($(this).hasClass('clicked')){
+			  $(".form").fadeIn(1000);
+			}else{	
+			  $(".form").fadeOut(100);
+			}
+			
+		});
+		});
+</script>
+
+<style>
+
+	
+   
+</html>
+

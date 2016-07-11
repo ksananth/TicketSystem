@@ -1,0 +1,61 @@
+
+
+<div role="main" class="container theme-showcase" style="padding:0px;">
+      <div class="" style="margin-top:20px;">
+        <div class="col-lg-8" style="padding-left:0px;">
+			
+			<div class="bs-component">
+				
+				<!--<form class="form-inline">
+					<div class="form-group">
+						<label >Search</label>
+						<input type="text" ng-model="search" class="form-control" placeholder="Search">
+					</div>
+				</form>-->
+				
+					<table  datatable="ng" id="example" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+				
+                    <th>Id</th>
+                    <th>Open</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Level</th>
+                    <th>Email Ticket Updates</th>
+                    <th>Pending</th>
+                    <th>Edit Locked</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    
+                    <td><a href="#/addUser?userId={{user.user_id}}">{{user.user_id}}</a></td>
+                    <td>{{user.openCont}}</td>
+                    <td>{{user.user_name}}</td>
+					<td>{{user.user_email}}</td>
+					<td><div ng-if="user.user_level=='4'">Super Administrator</div><div ng-if="user.user_level=='0'">Administrator</div><div ng-if="user.user_level=='1'">Support Staff</div><div ng-if="user.user_level=='2'">User</div></td>
+					<td><small ng-if="user.user_msg_send=='1'" class="label pull-middle bg-green">YES</small><small ng-if="user.user_msg_send=='0'" class="label pull-middle bg-black">NO</small></td>                  
+					<td><small ng-if="user.user_pending=='1'" class="label pull-middle bg-green">YES</small><small ng-if="user.user_pending=='0'" class="label pull-middle bg-black">NO</small></td>                  
+					<td><small ng-if="user.user_protect_edit=='1'" class="label pull-middle bg-green">YES</small><small ng-if="user.user_protect_edit=='0'" class="label pull-middle bg-black">NO</small></td>                  
+              </tr>
+				
+            </tbody>
+        </table>
+		
+			
+			
+		</div>
+		
+      </div>
+	  <loading></loading>
+    </div>
+	
+<script>
+	
+	 document.addEventListener("DOMContentLoaded", function(event) {
+    console.log("DOM fully loaded and parsed");
+	$('#example').DataTable();
+	debugger;
+		});
+</script>

@@ -1,0 +1,135 @@
+<div role="main" class="container theme-showcase" style="padding:0px;">
+      <div class="" style="margin-top:20px;">
+        <div class="col-lg-8" style="padding-left:0px;">
+			
+			<div class="bs-component" ng-controller="allTicket">
+				
+				<form class="form-inline">
+					<div class="form-group">
+						<label >My Account</label>						
+					</div>
+				</form>
+				<div   style="overflow:auto;">
+				<table class="table">
+					
+					<tbody>
+					<tr>
+						<td colspan="2" style="    text-align: center;">
+							<img  ng-hide="imageCropStep == 2" ng-src="{{dashboard.dashboard.user_profile_pic}}" class="user-image" alt="User Image">
+							<br/>
+							<div ng-show="imageCropStep == 2" style="margin-bottom: 5px;">
+								
+		
+									<button ng-click="clear()" class="cancelImage1">Cancel</button>
+									<button ng-click="initCrop = true" class="cropImage1">Crop</button>		
+							</div>			
+	  
+						   <div ng-show="imageCropStep == 2">
+							  <image-crop			 
+								 data-height="150"
+								 data-width="150"
+								 data-shape="square"
+								 data-step="imageCropStep"
+								 src="imgSrc"
+								 data-result="result"
+								 data-result-blob="resultBlob"
+								 crop="initCrop"
+								 padding="250"
+								 max-size="1024"
+							   ></image-crop>		   
+						   </div>
+						    <div class="fileUpload btn btn-primary">
+								<span>Upload</span>
+								<input type="file" class="upload" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+							</div>
+							<div class="fileUpload btn btn-primary">
+								<span ng-click="clear()">Clear &nbsp;</span>				
+							</div>
+       	   
+							</td>
+													
+						</tr>
+						<tr>
+						    <td>User Login</td>
+							<td> 
+								 <input class="form-control" ng-model="accountDetail.user_login" type="text" placeholder="User Login" disabled>
+					  </td>							
+						</tr>
+						<tr>
+						    <td>Password</td>
+							<td> <input class="form-control" type="password" placeholder="Minimum 5 charaters" ng-model="accountDetail.password"></td>							
+						</tr>
+						<tr>
+						    <td>User Category</td>
+							<td> <input class="form-control" type="text" ng-model="accountDetail.user_category" placeholder="Enter User Type"></td>							
+						</tr>
+						<tr>
+						    <td>Name</td>
+							<td> <input class="form-control" type="text" ng-model="accountDetail.user_name" placeholder="Enter Name"></td>							
+						</tr>
+						<tr ng-show="accountDetail.user_category=='Parent' || accountDetail.user_category=='Student'">
+						    <td>Registration Id</td>
+							<td> <input class="form-control" type="text" ng-model="accountDetail.user_registrationId" placeholder="Enter Name"></td>							
+						</tr>
+						<tr ng-show="accountDetail.user_category=='Parent' || accountDetail.user_category=='Student'">
+						    <td>Department</td>
+							<td> <input class="form-control" type="text" ng-model="accountDetail.user_department" placeholder="Enter Name"></td>							
+						</tr>
+						<tr ng-show="accountDetail.user_category=='Parent' || accountDetail.user_category=='Student'">
+						    <td>Course</td>
+							<td> <input class="form-control" type="text" ng-model="accountDetail.user_course" placeholder="Enter Name"></td>							
+						</tr>
+						<tr>
+						    <td>Email</td>
+							<td> <input class="form-control" type="text" ng-model="accountDetail.user_email" placeholder="Enter Email"></td>							
+						</tr>
+						<tr>
+						    <td>Receive Ticket?</td>
+							<td> 
+							  <input type="checkbox" ng-model="accountDetail.user_alert" name="receiveTicket" value="receiveTicket"> Receive ticket status emails?
+							</td>							
+						</tr>
+						<tr>
+						    <td>Phone</td>
+							<td> <input class="form-control" ng-model="accountDetail.user_phone" type="text" placeholder="Enter phone"></td>							
+						</tr>
+						<tr>
+						    <td>Address</td>
+							<td> 
+								<input class="form-control" ng-model="accountDetail.user_address" type="text" placeholder="Enter Address">
+							 </td>							
+						</tr>
+						<tr>
+						    <td>City</td>
+								<td> <input class="form-control" ng-model="accountDetail.user_city" type="text" placeholder="Enter City">
+							</td>							
+						</tr>
+						<tr>
+						    <td>State</td>
+							<td> <input class="form-control" ng-model="accountDetail.user_state" type="text" placeholder="Enter State">	</td>							
+						</tr>
+						<tr>
+						    <td>Zip</td>
+							<td> <input class="form-control" ng-model="accountDetail.user_zip" type="text" placeholder="Enter Zip ..."></td>							
+						</tr>
+						<tr>
+						    <td>Country</td>
+							<td> <input class="form-control" ng-model="accountDetail.country" type="text" placeholder="Enter Country ..."></td>							
+						</tr>
+						
+						<tr>
+						    <td colspan="2"><button class="btn btn-block btn-primary btn-sm" ng-click="updateUserDetail()">Update Details</button></td>
+													
+						</tr>
+						
+						
+					</tbody>
+				</table> 
+				</div>
+				
+			</div>
+		</div>
+		
+      </div>
+	  <loading></loading>
+    </div>
